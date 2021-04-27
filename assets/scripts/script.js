@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function runGame(gameType) {
   let num1 =  Math.floor(Math.random() * 25) + 1;
   let num2 =  Math.floor(Math.random() * 25) + 1;
-  getElementById("answer-box").textContent = "";
+  
   if (gameType === "addition") {
       displayAdditionQuestion(num1, num2);
   } else if (gameType === "subtraction") {
@@ -32,6 +32,7 @@ function runGame(gameType) {
       alert(`Unknown game type ${gameType}`);
       throw `Unknown game type ${gameType}, aborting!`;
   }
+  document.getElementById("answer-box").textContent = "";
 }
 
 function checkAnswer() {
@@ -60,11 +61,7 @@ function calculateCorrectAnswer() {
     } else if (operator === "*") {
         return [operand1 * operand2, "multiplication"];
     } else if (operator === "/") {
-        while (operand1 % operand2 != "0") {
-            operand1 = Math.floor(Math.random() * 24) + 2;
-            operand2 = Math.floor(Math.random() * 8) + 1;
-        }
-        return [operand1 * operand2, "division"];
+        return [operand1 / operand2, "division"];
     } else {
         alert(`Unknown game type ${gameType}`);
         throw `Unknown game type ${gameType}, aborting!`;
@@ -100,6 +97,10 @@ function displayMultiplicationQuestion(operand1, operand2) {
 }
 
 function displayDivisionQuestion(operand1, operand2) {
+    while (operand1 % operand2 != "0" || operand1 < operand2) {
+            operand1 = Math.floor(Math.random() * 80) + 2;
+            operand2 = Math.floor(Math.random() * 10) + 1;
+        }
     document.getElementById("operand1").textContent = operand1;
     document.getElementById("operator").textContent = "/";
     document.getElementById("operand2").textContent = operand2;
