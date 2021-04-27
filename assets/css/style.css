@@ -19,6 +19,9 @@ body {
     padding-right: 5px;
 }
 
+a {
+    text-decoration: none;
+}
 /* --------- Game layout */
 
 .game-area {

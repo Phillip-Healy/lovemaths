@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function runGame(gameType) {
   let num1 =  Math.floor(Math.random() * 25) + 1;
   let num2 =  Math.floor(Math.random() * 25) + 1;
-  
+  document.getElementById("answer-box").value = "";
+
   if (gameType === "addition") {
       displayAdditionQuestion(num1, num2);
   } else if (gameType === "subtraction") {
@@ -32,7 +33,6 @@ function runGame(gameType) {
       alert(`Unknown game type ${gameType}`);
       throw `Unknown game type ${gameType}, aborting!`;
   }
-  document.getElementById("answer-box").textContent = "";
 }
 
 function checkAnswer() {
